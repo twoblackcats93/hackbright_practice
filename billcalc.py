@@ -1,44 +1,53 @@
-# Bill Calculator
+# Bill Calculator with prompts
 
-prompt = float(raw_input("Enter 1 if you'd like to calculate tip and 2 if you'd like to split the bill: "))
-
-def main():
-	if prompt == 1:
-		bill = float(raw_input("How much is the bill? "))
-		tip_perc = tip_perc = float(raw_input("What tip percentage would you like to leave? "))
-print total_bill()
-	
-bill_split = raw_input("Would you like to split the bill")
-if bill_split.lower("yes"):
-	peeps = float(raw_input("How many people are in your group? "))
-print split_bill()
-elif:
-	print total_bill()	
-
-elif prompt == 2:
-	bill = float(raw_input("How much is the bill? "))
-	peeps = float(raw_input("How many people are in your group? "))
-print split_bill()
-else:
-	print "Invalid choice, enter 1 or 2"	
+choice = input("Choose 1 - calculate tip or 2 - split the bill: ")
 
 def tip():
 	global bill
-	tip_amt = bill*tip_perc/100
+	tip_amt = bill * tip_perc/100
 	return (tip_amt)
 
 def total_bill():
+	global bill
 	t_bill= bill + tip()
 	return t_bill
 
 def split_bill():
+	global bill
+	global peeps
 	split_bill = bill/peeps
 	return split_bill
 
+def main():
+	if choice == 1:
+		global bill
+		global peeps
+		global tip_perc
+		bill = float(input("How much is the bill? "))
+		tip_perc = float(input("What tip percentage would you like to leave? "))
+		print "Your tip is" , tip()
+		print "Your total bill is" , total_bill()
+		bill_split = raw_input("Would you like to split the bill? ")
+	
 
-		
-if __name__ == '__main__':
-	main()
+		if bill_split.lower() == "yes":
+			peeps = float(input("How many people are in your group? "))
+			print "Each person pays" , split_bill()
+		else:
+			print "Your total bill is" , total_bill()	
+	
+
+	elif choice == 2:
+		bill = float(input("How much is the bill? "))
+		peeps = float(input("How many people are in your group? "))
+		print "Each person pays" , split_bill()
+	
+	else:
+		print "Invalid choice, enter 1 or 2"		
+
+if __name__ == "__main__": 
+	main()	
+
 
 
 
