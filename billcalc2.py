@@ -7,7 +7,7 @@ peeps = float(input("How many people are in your group? "))
 def tip():
 	global bill
 	tip_amt = bill * tip_perc/100
-	return (tip_amt)
+	return tip_amt
 
 def total_bill():
 	t_bill= bill + tip()
